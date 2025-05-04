@@ -1,4 +1,4 @@
-let CLIENT_ID = e2d6b76d1df2445dadbe5248700bc4f2;
+let CLIENT_ID = "e2d6b76d1df2445dadbe5248700bc4f2";
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('malForm');
