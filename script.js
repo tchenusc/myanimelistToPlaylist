@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const state = generateRandomString(16);
 
         // Spotify authorization endpoint
-        const redirectUri = encodeURIComponent(window.location.origin); // Redirect back to the current origin
+        const redirectUri = 'https://tchenusc.github.io/myanimelistToPlaylist/'; // Redirect back to the current origin
         const scope = encodeURIComponent('user-read-private user-read-email'); // Example scopes
         const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&state=${state}&show_dialogue=true`;
 
