@@ -34,13 +34,16 @@ function generateRandomString(length) {
 function onPageLoad()
 {
     if (window.location.search.length > 0) {
-        handleRedirect();
-        connectWithBackend();
+        var code = handleRedirect();
+        connectWithBackend(code);
     }
 }
 
-function connectWithBackend() {
-    fetch('https://636de87a-4cb8-44a9-b7d1-7965468b1d6c-00-x7tu5fwiji0d.kirk.replit.dev/top_rated_anime')
+function connectWithBackend(c) {
+    username = "tonyisyh44"
+    code = c;
+    var url = `https://636de87a-4cb8-44a9-b7d1-7965468b1d6c-00-x7tu5fwiji0d.kirk.replit.dev/top_rated_anime?code=${encodeURIComponent(code)}&username=${encodeURIComponent(username)}`;
+    fetch(url)
     .then(response => response.json())
     .then(data => {
         console.log(data); 
@@ -51,7 +54,7 @@ function connectWithBackend() {
 function handleRedirect() {
     let code = getCode();
     window.history.pushState("", "", redirectUri);
-    alert(code);
+    return code
 }
 
 function getCode() {
