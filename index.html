@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyAnimeList to Playlist Converter</title>
+    <title>Spotify API Authorization</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,37 +12,30 @@
 <body>
     <div class="container">
         <header>
-            <h1>MyAnimeList to Playlist</h1>
-            <p class="subtitle">Convert your MyAnimeList anime list into a playlist</p>
+            <h1>Spotify API Authorization</h1>
+            <p class="subtitle">Request an authorization code for the Spotify API</p>
         </header>
         
         <main>
             <div class="input-section">
-                <form id="malForm">
+                <form id="spotifyForm">
                     <div class="input-group">
-                        <label for="malUrl">Enter your MyAnimeList profile URL:</label>
+                        <label for="clientId">Enter your Spotify Client ID:</label>
                         <input 
-                            type="url" 
-                            id="malUrl" 
-                            name="malUrl" 
-                            placeholder="https://myanimelist.net/profile/username"
+                            type="text" 
+                            id="clientId" 
+                            name="clientId" 
+                            placeholder="Your Spotify Client ID"
                             required
                         >
                     </div>
-                    <button type="submit" class="primary-button">Convert to Playlist</button>
+                    <button type="submit" class="primary-button">Request Authorization</button>
                 </form>
-            </div>
-
-            <div class="result-section" id="resultSection" style="display: none;">
-                <h2>Your Playlist</h2>
-                <div class="playlist-container" id="playlistContainer">
-                    <!-- Playlist items will be inserted here -->
-                </div>
             </div>
         </main>
 
         <footer>
-            <p>Created with ❤️ for anime fans</p>
+            <p>Created with ❤️ for developers</p>
         </footer>
     </div>
     <script src="script.js"></script>
