@@ -1,4 +1,6 @@
-let CLIENT_ID = "e2d6b76d1df2445dadbe5248700bc4f2";
+
+var redirectUri = 'https://tchenusc.github.io/myanimelistToPlaylist/';
+var CLIENT_ID = "e2d6b76d1df2445dadbe5248700bc4f2";
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('malForm');
@@ -12,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const state = generateRandomString(16);
 
         // Spotify authorization endpoint
-        const redirectUri = 'https://tchenusc.github.io/myanimelistToPlaylist/'; // Redirect back to the current origin
         const scope = encodeURIComponent('user-read-private user-read-email'); // Example scopes
         const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&state=${state}&show_dialogue=true`;
 
@@ -28,4 +29,29 @@ function generateRandomString(length) {
         result += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return result;
+}
+
+function onPageLoad()
+{
+    if (window.location.search.length > 0) {
+        handleRedirect();
+    }
+}
+
+function handleRedirect() {
+    let code = getCode();
+    window.history.pushState("", "", redirectUri);
+    alert(code);
+}
+
+function getCode() {
+    let code = null;
+    const queryString = window.location.search;
+
+    if (queryString.length > 0) {
+        const urlParams = new URLSearchParams(queryString);
+        code = urlParams.get('code');
+    }
+
+    return code;
 }
