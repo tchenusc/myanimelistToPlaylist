@@ -43,8 +43,7 @@ function connectWithBackend() {
     fetch('https://636de87a-4cb8-44a9-b7d1-7965468b1d6c-00-x7tu5fwiji0d.kirk.replit.dev/top_rated_anime')
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); 
-        alert(data.message); // For demonstration
+        console.log(data); 
     })
     .catch(error => console.error('Error:', error));
 
