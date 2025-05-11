@@ -1,11 +1,13 @@
 :root {
     --primary-color: #2e51a2;
+    --primary-hover: #1e3a8a;
     --secondary-color: #1a1a1a;
-    --background-color: #ffffff;
-    --text-color: #333333;
-    --border-color: #e0e0e0;
-    --success-color: #4caf50;
-    --error-color: #f44336;
+    --background-color: #f9fafb;
+    --card-background: #ffffff;
+    --text-color: #1f2937;
+    --border-color: #e5e7eb;
+    --input-focus: #60a5fa;
+    --shadow-color: rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -24,7 +26,7 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 3rem 1.5rem;
 }
 
 header {
@@ -45,10 +47,10 @@ h1 {
 }
 
 .input-section {
-    background-color: white;
+    background-color: var(--card-background);
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 6px 16px var(--shadow-color);
     margin-bottom: 2rem;
 }
 
@@ -68,36 +70,40 @@ input[type="url"] {
     border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    background-color: #f3f4f6;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 input[type="url"]:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--input-focus);
+    background-color: white;
 }
 
 .primary-button {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.2s ease-in-out;
     width: 100%;
 }
 
 .primary-button:hover {
-    background-color: #1e3a8a;
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 81, 162, 0.2);
 }
 
 .result-section {
-    background-color: white;
+    background-color: var(--card-background);
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 6px 16px var(--shadow-color);
 }
 
 .playlist-container {
@@ -105,10 +111,7 @@ input[type="url"]:focus {
 }
 
 footer {
-    text-align: center;
-    margin-top: 3rem;
-    color: var(--secondary-color);
-    opacity: 0.7;
+    display: none;
 }
 
 @media (max-width: 600px) {
@@ -123,4 +126,4 @@ footer {
     .input-section, .result-section {
         padding: 1.5rem;
     }
-} 
+}
