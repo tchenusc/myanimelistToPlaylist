@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const state = generateRandomString(16);
 
         // Spotify authorization endpoint
-        const scope = encodeURIComponent('user-read-private user-read-email playlist-modify-public playlist-modify-private'); // Example scopes
+        const scope = encodeURIComponent('user-read-private user-read-email playlist-modify-public playlist-modify-private ugc-image-upload'); // Example scopes
         const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&state=${state}&show_dialogue=true`;
 
         // Redirect the user to the Spotify authorization page
