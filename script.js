@@ -40,17 +40,37 @@ function onPageLoad()
 }
 
 function connectWithBackend(c) {
-    username = "tonyisyh44"
-    code = c;
-    var url = `https://636de87a-4cb8-44a9-b7d1-7965468b1d6c-00-x7tu5fwiji0d.kirk.replit.dev/top_rated_anime?code=${encodeURIComponent(code)}&username=${encodeURIComponent(username)}`;
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data); 
-    })
-    .catch(error => console.error('Error:', error));
+    const username = "tonyisyh44";
+    const code = c;
+    const url = `https://636de87a-4cb8-44a9-b7d1-7965468b1d6c-00-x7tu5fwiji0d.kirk.replit.dev/top_rated_anime?code=${encodeURIComponent(code)}&username=${encodeURIComponent(username)}`;
 
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+
+            const playlistUrl = data.anime_playlist_url;
+
+            // Convert to Spotify embed URL
+            const embedUrl = playlistUrl.replace("open.spotify.com/playlist", "open.spotify.com/embed/playlist");
+
+            const resultSection = document.getElementById("resultSection");
+            const playlistContainer = document.getElementById("playlistContainer");
+
+            resultSection.style.display = "block";
+
+            playlistContainer.innerHTML = `
+                <iframe style="border-radius:12px"
+                        src="${embedUrl}"
+                        width="100%" height="380" frameborder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                </iframe>
+            `;
+        })
+        .catch(error => console.error('Error:', error));
 }
+
 function handleRedirect() {
     let code = getCode();
     window.history.pushState("", "", redirectUri);
