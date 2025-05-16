@@ -103,6 +103,14 @@ function connectWithBackend(code) {
     requestAnimationFrame(() => {
         loading.style.opacity = 1;
     });
+    startLoadingAnimation();
+
+    // Later, when hiding loading:
+    loading.style.opacity = 0;
+    loading.addEventListener("transitionend", () => {
+        loading.style.display = "none";
+        stopLoadingAnimation();
+    }, { once: true });
 
     // Disable submit button while loading (optional)
     if (submitButton) submitButton.disabled = true;
@@ -141,4 +149,22 @@ function connectWithBackend(code) {
 
             if (submitButton) submitButton.disabled = false;
         });
+}
+
+let loadingInterval;
+
+function startLoadingAnimation() {
+    const loading = document.getElementById('loading');
+    let dots = 0;
+    loading.textContent = "Loading";
+    loadingInterval = setInterval(() => {
+        dots = (dots + 1) % 4;  // cycles 0..3
+        loading.textContent = "Loading" + ".".repeat(dots);
+    }, 500);  // update every 500ms
+}
+
+function stopLoadingAnimation() {
+    clearInterval(loadingInterval);
+    const loading = document.getElementById('loading');
+    loading.textContent = "Loading";
 }
