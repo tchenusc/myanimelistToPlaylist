@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = extractUsernameFromMalUrl(malUrl);
 
         if (!username) {
-            alert("Invalid MyAnimeList URL. Please enter a valid profile link.");
+            alert("Invalid MyAnimeList URL. Please enter a valid link.");
             return;
         }
 
@@ -46,6 +46,7 @@ function extractUsernameFromMalUrl(url) {
         const segments = parsedUrl.pathname.split('/');
         const profileIndex = segments.indexOf("animelist");
         if (profileIndex !== -1 && segments.length > profileIndex + 1) {
+            console.log(segments[profileIndex + 1]);
             return segments[profileIndex + 1];
         }
     } catch (e) {
