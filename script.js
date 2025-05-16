@@ -44,7 +44,7 @@ function extractUsernameFromMalUrl(url) {
     try {
         const parsedUrl = new URL(url);
         const segments = parsedUrl.pathname.split('/');
-        const profileIndex = segments.indexOf("profile");
+        const profileIndex = segments.indexOf("animelist");
         if (profileIndex !== -1 && segments.length > profileIndex + 1) {
             return segments[profileIndex + 1];
         }
