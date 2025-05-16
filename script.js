@@ -4,6 +4,8 @@ const CLIENT_ID = "e2d6b76d1df2445dadbe5248700bc4f2";
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('malForm');
+    const loading = document.getElementById('loading');
+    const submitButton = form.querySelector('button[type="submit"]');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -43,11 +45,16 @@ function generateRandomString(length) {
 function extractUsernameFromMalUrl(url) {
     try {
         const parsedUrl = new URL(url);
-        const segments = parsedUrl.pathname.split('/');
+        // Use filter(Boolean) to avoid empty string segments
+        const segments = parsedUrl.pathname.split('/').filter(Boolean);
         const profileIndex = segments.indexOf("animelist");
-        console.log(segments);
         if (profileIndex !== -1 && segments.length > profileIndex + 1) {
             return segments[profileIndex + 1];
+        }
+        // Also accept /profile/username URLs
+        const profileAltIndex = segments.indexOf("profile");
+        if (profileAltIndex !== -1 && segments.length > profileAltIndex + 1) {
+            return segments[profileAltIndex + 1];
         }
     } catch (e) {
         return null;
@@ -80,12 +87,25 @@ function getCode() {
 
 function connectWithBackend(code) {
     const username = localStorage.getItem("mal_username");
+    const loading = document.getElementById("loading");
+    const resultSection = document.getElementById("resultSection");
+    const playlistContainer = document.getElementById("playlistContainer");
+    const submitButton = document.querySelector('#malForm button[type="submit"]');
 
     if (!username) {
         console.error("Username not found. Please restart the process.");
-        alert("Link error, please try again!")
+        alert("Link error, please try again!");
         return;
     }
+
+    // Show loading indicator (fade in)
+    loading.style.display = "block";
+    requestAnimationFrame(() => {
+        loading.style.opacity = 1;
+    });
+
+    // Disable submit button while loading (optional)
+    if (submitButton) submitButton.disabled = true;
 
     const url = `https://636de87a-4cb8-44a9-b7d1-7965468b1d6c-00-x7tu5fwiji0d.kirk.replit.dev/top_rated_anime?code=${encodeURIComponent(code)}&username=${encodeURIComponent(username)}`;
 
@@ -96,9 +116,6 @@ function connectWithBackend(code) {
 
             const playlistUrl = data.anime_playlist_url;
             const embedUrl = playlistUrl.replace("open.spotify.com/playlist", "open.spotify.com/embed/playlist");
-
-            const resultSection = document.getElementById("resultSection");
-            const playlistContainer = document.getElementById("playlistContainer");
 
             resultSection.style.display = "block";
 
@@ -111,5 +128,17 @@ function connectWithBackend(code) {
                 </iframe>
             `;
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Failed to fetch playlist data. Please try again.");
+        })
+        .finally(() => {
+            // Hide loading indicator (fade out)
+            loading.style.opacity = 0;
+            loading.addEventListener("transitionend", () => {
+                loading.style.display = "none";
+            }, { once: true });
+
+            if (submitButton) submitButton.disabled = false;
+        });
 }
