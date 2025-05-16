@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #2e51a2;
-    --primary-hover: #1e3a8a;
+    --primary-color: #3683e0;      /* Vibrant blue */
+    --primary-hover: #2b69bf;      /* Slightly darker for hover */
     --secondary-color: #1a1a1a;
     --background-color: #f9fafb;
     --card-background: #ffffff;
@@ -126,4 +126,25 @@ footer {
     .input-section, .result-section {
         padding: 1.5rem;
     }
+}
+
+.instructions-section {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px var(--shadow-color);
+    margin-bottom: 2rem;
+}
+
+.instructions-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.instructions-list {
+    padding-left: 1.25rem;
+    list-style-type: decimal;
+    line-height: 1.8;
+    color: var(--text-color);
 }

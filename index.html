@@ -13,19 +13,28 @@
     <div class="container">
         <header>
             <h1>MyAnimeList to Playlist</h1>
-            <p class="subtitle">Convert your MyAnimeList anime list into a playlist</p>
+            <p class="subtitle">Create a Spotify playlist based on your anime favorites</p>
         </header>
         
         <main>
+            <div class="instructions-section">
+                <h2>How It Works</h2>
+                <ol class="instructions-list">
+                    <li>Enter your MyAnimeList profile URL below</li>
+                    <li>Follow the instructions to log in to your Spotify account</li>
+                    <li>Your newly generated playlist based on your favorite animes will be created in your Spotify account!</li>
+                </ol>
+            </div>
+
             <div class="input-section">
                 <form id="malForm">
                     <div class="input-group">
                         <label for="malUrl">Enter your MyAnimeList profile URL:</label>
-                        <input 
-                            type="url" 
-                            id="malUrl" 
-                            name="malUrl" 
-                            placeholder="https://myanimelist.net/profile/username"
+                        <input
+                            type="url"
+                            id="malUrl"
+                            name="malUrl"
+                            placeholder="https://myanimelist.net/profile/yourusername"
                             required
                         >
                     </div>
@@ -36,7 +45,7 @@
             <div class="result-section" id="resultSection" style="display: none;">
                 <h2>Your Playlist</h2>
                 <div class="playlist-container" id="playlistContainer">
-                    <!-- Playlist items will be inserted here -->
+                    <!-- Playlist embed goes here -->
                 </div>
             </div>
         </main>
