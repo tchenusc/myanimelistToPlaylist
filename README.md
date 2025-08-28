@@ -18,7 +18,7 @@ This project combines **frontend, backend, and third-party API integration** to 
 
 ---
 
-## 🧩 Key Features
+## Key Features
 
 - **User Authentication**  
   - OAuth 2.0 flow with Spotify (authorization code flow)  
@@ -44,7 +44,7 @@ This project combines **frontend, backend, and third-party API integration** to 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -57,7 +57,7 @@ This project combines **frontend, backend, and third-party API integration** to 
 
 ---
 
-## 💡 Technical Skills Demonstrated
+## Technical Skills Demonstrated
 
 - **Full-Stack Development**: End-to-end integration of backend APIs with frontend UI  
 - **Third-Party API Integration**: Orchestrating multiple APIs (MyAnimeList + Spotify) for real-time data processing  
@@ -69,7 +69,7 @@ This project combines **frontend, backend, and third-party API integration** to 
 
 ---
 
-## ⚡ Installation & Usage
+## Installation & Usage
 
 ### Frontend
 1. Clone or download the repository.  
@@ -94,7 +94,7 @@ This project combines **frontend, backend, and third-party API integration** to 
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 1. Frontend captures MyAnimeList profile URL and generates Spotify authorization redirect
 2. Backend receives `code` from Spotify, fetches `access_token` and `refresh_token`
@@ -105,7 +105,7 @@ This project combines **frontend, backend, and third-party API integration** to 
 
 ---
 
-## 📝 Future Improvements
+## Future Improvements
 
 * **Enhanced Playlist Features**: Sorting by anime score, genre, or release year
 * **Caching & Performance**: Store frequently accessed anime data to reduce API calls
