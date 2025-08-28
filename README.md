@@ -1,10 +1,10 @@
-# 🎵 MyAnimeList to Spotify Playlist Converter
+# MyAnimeList to Spotify Playlist Converter
 
 **MyAnimeList to Playlist** is a web and backend application that **automatically generates Spotify playlists** based on a user’s favorite anime from MyAnimeList. The app leverages **REST APIs, OAuth authentication, and dynamic data processing**, demonstrating full-stack development, API integration, and user experience optimization.
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 
 This project combines **frontend, backend, and third-party API integration** to create a seamless user experience:
 
