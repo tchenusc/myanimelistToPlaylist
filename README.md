@@ -105,9 +105,9 @@ This project combines **frontend, backend, and third-party API integration** to 
 
 ---
 
-## Future Improvements
+## Screenshots
 
-* **Enhanced Playlist Features**: Sorting by anime score, genre, or release year
-* **Caching & Performance**: Store frequently accessed anime data to reduce API calls
-* **Error Handling**: More robust recovery from failed API calls
-* **Cross-Platform UI**: Mobile-optimized design for better usability
+| Screenshot 1 | Screenshot 2 |
+|--------------|--------------|
+| <img src="screenshots/output-onlinepngtools (1).png" alt="Screenshot 1" width="500"/> | <img src="screenshots/output-onlinepngtools.png" alt="Screenshot 2" width="500"/> |
+
